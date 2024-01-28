@@ -1,0 +1,7 @@
+seqdiag {
+  autonumber = True
+  user -> webserver [label = "POST /", leftnote = "User triggers request from application\nor browser and post request body"];
+  webserver -> daemon [label = "POST /", leftnote = "Forward request to\ndaemon process thread"];
+  webserver <- daemon [label = "POST /poll", rightnote = "ping webhook\non task completion"];
+  user <- webserver [label = "notification", rightnote = "notification to user\nthat process is complete"];
+}
